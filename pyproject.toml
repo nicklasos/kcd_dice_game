@@ -13,6 +13,11 @@ pytest = "^8.3.5"
 pytest-cov = "^6.1.1"
 loguru = "^0.7.3"
 pydantic = "^2.11.4"
+numpy = "^2.2.5"
+opencv-python = "^4.11.0.86"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.15.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
