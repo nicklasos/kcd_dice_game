@@ -1,4 +1,4 @@
-from utils.config import Config
+from kcd_dice_game.utils.config import Config
 
 cfg = Config()
 

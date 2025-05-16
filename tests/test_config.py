@@ -1,7 +1,7 @@
 import pytest
 import os
 import json
-from src.utils.config import Config
+from kcd_dice_game.utils.config import Config
 
 @pytest.fixture
 def config_dir(tmp_path):
@@ -42,13 +42,15 @@ def config(config_dir, monkeypatch):
     def mock_abspath(path):
         if '__file__' in str(path):
             # When getting the config.py file path, return a path that will work with our mock
-            return os.path.join(str(config_dir.parent), 'src', 'utils', 'config.py')
+            return os.path.join(str(config_dir.parent), 'src', 'kcd_dice_game', 'utils', 'config.py')
         return original_abspath(path)
 
     def mock_dirname(path):
-        if 'src/utils/config.py' in path:
-            return os.path.join(str(config_dir.parent), 'src', 'utils')
-        elif 'src/utils' in path:
+        if 'src/kcd_dice_game/utils/config.py' in path or 'src\\kcd_dice_game\\utils\\config.py' in path:
+            return os.path.join(str(config_dir.parent), 'src', 'kcd_dice_game', 'utils')
+        elif 'src/kcd_dice_game/utils' in path or 'src\\kcd_dice_game\\utils' in path:
+            return os.path.join(str(config_dir.parent), 'src', 'kcd_dice_game')
+        elif 'src/kcd_dice_game' in path or 'src\\kcd_dice_game' in path:
             return os.path.join(str(config_dir.parent), 'src')
         elif 'src' in path:
             return str(config_dir.parent)

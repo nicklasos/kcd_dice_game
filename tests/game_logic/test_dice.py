@@ -4,7 +4,7 @@ Tests for the dice module.
 import pytest
 from unittest.mock import patch
 
-from src.game_logic.dice import Dice, DiceSet
+from kcd_dice_game.game_logic.dice import Dice, DiceSet
 
 
 class TestDice:
@@ -70,7 +70,7 @@ class TestDice:
 class TestDiceSet:
     """Test cases for the DiceSet class."""
 
-    @patch('src.utils.config.Config.get', return_value=6)
+    @patch('kcd_dice_game.utils.config.Config.get', return_value=6)
     def test_init_default_count(self, mock_get):
         """Test initializing a dice set with default count from config."""
         dice_set = DiceSet()

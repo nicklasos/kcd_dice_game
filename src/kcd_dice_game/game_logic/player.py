@@ -2,8 +2,8 @@
 Player module for the KCD dice game.
 Contains the Player class for managing player state during the game.
 """
-from utils.logger import logger
-from utils.config import Config
+from kcd_dice_game.utils.logger import logger
+from kcd_dice_game.utils.config import Config
 
 
 class Player:

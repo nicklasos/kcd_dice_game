@@ -23,7 +23,7 @@ class Config:
             config_name (str): Name of the config file without .json extension.
                              Will load from config/{config_name}.json
         """
-        root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
         config_dir = os.path.join(root_dir, 'config')
         config_path = os.path.join(config_dir, f"{config_name}.json")
 
@@ -33,6 +33,8 @@ class Config:
         except FileNotFoundError:
             # If file doesn't exist, create it with empty config
             self._configs[config_name] = {}
+            # Ensure the directory exists before creating the file
+            os.makedirs(os.path.dirname(config_path), exist_ok=True)
             with open(config_path, 'w') as f:
                 json.dump({}, f, indent=4)
         except json.JSONDecodeError:

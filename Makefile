@@ -14,15 +14,15 @@ help:
 
 # Install dependencies
 install:
-	poetry install --no-root
+	poetry install
 
 # Run the main application
 run:
-	poetry run python src/main.py
+	poetry run python -m kcd_dice_game.main
 
 # Run the CLI interface
 cli:
-	poetry run python src/cli.py
+	poetry run python -m kcd_dice_game.cli
 
 # Run tests
 test:
@@ -30,12 +30,12 @@ test:
 
 # Run tests with coverage report
 test-cov:
-	poetry run pytest --cov=src tests/
+	poetry run pytest --cov=kcd_dice_game tests/
 	@echo "HTML coverage report available at: htmlcov/index.html"
 
 # Format code
 format:
-	poetry run black src/ tests/
+	poetry run black src/kcd_dice_game/ tests/
 
 # Clean up build artifacts
 clean:
@@ -48,8 +48,8 @@ clean:
 	find . -type f -name "*.pyc" -delete
 
 t:
-	poetry run src/t.py
+	poetry run python -m kcd_dice_game.t
 
 # Run linter
 lint:
-	ruff src/ tests/
+	ruff src/kcd_dice_game/ tests/

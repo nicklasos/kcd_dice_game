@@ -1,20 +1,22 @@
-[project]
+[tool.poetry]
 name = "kcd-dice-game"
 version = "0.1.0"
 description = "KCD dice game assistant"
-authors = [
-    { name = "Nicklasos" }
-]
-license = { text = "MIT" }
+authors = ["Nicklasos"]
+license = "MIT"
 readme = "README.md"
-requires-python = "^3.13"
-dependencies = [
-    "pytest (>=8.3.5,<9.0.0)",
-    "pytest-cov (>=6.1.1,<7.0.0)",
-    "loguru (>=0.7.3,<0.8.0)",
-    "pydantic (>=2.11.4,<3.0.0)"
-]
+packages = [{include = "kcd_dice_game", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
+loguru = "^0.7.3"
+pydantic = "^2.11.4"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+cli = "kcd_dice_game.cli:main"

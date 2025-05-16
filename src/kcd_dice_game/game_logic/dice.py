@@ -5,8 +5,8 @@ Contains classes for representing dice and sets of dice.
 import random
 from typing import List, Optional
 
-from utils.logger import logger
-from utils.config import Config
+from kcd_dice_game.utils.logger import logger
+from kcd_dice_game.utils.config import Config
 
 
 class Dice:

@@ -4,7 +4,7 @@ Tests for the player module.
 import pytest
 from unittest.mock import patch, MagicMock
 
-from src.game_logic.player import Player
+from kcd_dice_game.game_logic.player import Player
 
 
 class TestPlayer:
@@ -13,7 +13,7 @@ class TestPlayer:
     @pytest.fixture
     def player(self):
         """Create a Player with mocked config."""
-        with patch('src.utils.config.Config') as mock_config_class:
+        with patch('kcd_dice_game.utils.config.Config') as mock_config_class:
             mock_config = MagicMock()
             mock_config_class.return_value = mock_config
             

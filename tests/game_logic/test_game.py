@@ -4,8 +4,8 @@ Tests for the game module.
 import pytest
 from unittest.mock import patch, MagicMock
 
-from src.game_logic.game import Game
-from src.game_logic.exceptions import InvalidMoveException, GameRuleException, GameStateException
+from kcd_dice_game.game_logic.game import Game
+from kcd_dice_game.game_logic.exceptions import InvalidMoveException, GameRuleException, GameStateException
 
 
 class TestGame:
@@ -14,8 +14,8 @@ class TestGame:
     @pytest.fixture
     def game(self):
         """Create a Game instance with mocked dependencies."""
-        with patch('src.game_logic.game.DiceSet') as mock_dice_set_class, \
-             patch('src.game_logic.game.ScoreCalculator') as mock_score_calc_class:
+        with patch('kcd_dice_game.game_logic.game.DiceSet') as mock_dice_set_class, \
+             patch('kcd_dice_game.game_logic.game.ScoreCalculator') as mock_score_calc_class:
             
             # Mock DiceSet
             mock_dice_set = MagicMock()

@@ -1,0 +1,3 @@
+"""
+KCD Dice Game package.
+"""

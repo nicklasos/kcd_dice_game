@@ -4,11 +4,11 @@ Contains the main Game class that manages the overall game state.
 """
 from typing import List, Optional, Dict, Any, Tuple
 
-from game_logic.dice import DiceSet
-from game_logic.player import Player
-from game_logic.scoring import ScoreCalculator
-from game_logic.exceptions import InvalidMoveException, GameRuleException, GameStateException
-from utils.logger import logger
+from kcd_dice_game.game_logic.dice import DiceSet
+from kcd_dice_game.game_logic.player import Player
+from kcd_dice_game.game_logic.scoring import ScoreCalculator
+from kcd_dice_game.game_logic.exceptions import InvalidMoveException, GameRuleException, GameStateException
+from kcd_dice_game.utils.logger import logger
 
 
 class Game:

@@ -5,7 +5,7 @@ import pytest
 from unittest.mock import patch, MagicMock
 from collections import Counter
 
-from src.game_logic.scoring import ScoreCalculator
+from kcd_dice_game.game_logic.scoring import ScoreCalculator
 
 
 class TestScoreCalculator:
@@ -14,7 +14,7 @@ class TestScoreCalculator:
     @pytest.fixture
     def score_calculator(self):
         """Create a ScoreCalculator with mocked config."""
-        with patch('src.utils.config.Config') as mock_config_class:
+        with patch('kcd_dice_game.utils.config.Config') as mock_config_class:
             mock_config = MagicMock()
             mock_config_class.return_value = mock_config
             

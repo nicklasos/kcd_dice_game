@@ -5,8 +5,8 @@ Contains logic for calculating scores based on dice combinations.
 from collections import Counter
 from typing import List, Dict, Set, Tuple, Optional
 
-from utils.logger import logger
-from utils.config import Config
+from kcd_dice_game.utils.logger import logger
+from kcd_dice_game.utils.config import Config
 
 
 class ScoreCalculator:

@@ -6,7 +6,7 @@ from pathlib import Path
 from loguru import logger
 
 # Get the project root directory
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent.parent.parent
 
 # Create logs directory if it doesn't exist
 LOGS_DIR = PROJECT_ROOT / "logs"
