@@ -1,0 +1,21 @@
+{
+    "max_score": 5000,
+    "scoring_rules": {
+        "single_1": 100,
+        "single_5": 50,
+        "three_1": 1000,
+        "three_2": 200,
+        "three_3": 300,
+        "three_4": 400,
+        "three_5": 500,
+        "three_6": 600,
+        "straight": 1500,
+        "three_pairs": 1000
+    },
+    "multipliers": {
+        "four_of_kind": 2,
+        "five_of_kind": 3,
+        "six_of_kind": 4
+    },
+    "dice_count": 6
+}
