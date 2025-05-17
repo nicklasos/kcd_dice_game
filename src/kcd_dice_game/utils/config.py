@@ -1,6 +1,6 @@
 import json
-import os
-from typing import Dict, Any
+from pathlib import Path
+from typing import Any, Dict
 
 
 class Config:
@@ -24,21 +24,19 @@ class Config:
             config_name (str): Name of the config file without .json extension.
                              Will load from config/{config_name}.json
         """
-        root_dir = os.path.dirname(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        )
-        config_dir = os.path.join(root_dir, "config")
-        config_path = os.path.join(config_dir, f"{config_name}.json")
+        root_dir = Path(__file__).resolve().parents[3]
+        config_dir = root_dir / "config"
+        config_path = config_dir / f"{config_name}.json"
 
         try:
-            with open(config_path, "r") as f:
+            with config_path.open("r") as f:
                 self._configs[config_name] = json.load(f)
         except FileNotFoundError:
             # If file doesn't exist, create it with empty config
             self._configs[config_name] = {}
             # Ensure the directory exists before creating the file
-            os.makedirs(os.path.dirname(config_path), exist_ok=True)
-            with open(config_path, "w") as f:
+            config_dir.mkdir(parents=True, exist_ok=True)
+            with config_path.open("w") as f:
                 json.dump({}, f, indent=4)
         except json.JSONDecodeError:
             raise ValueError(f"Invalid JSON in configuration file: {config_path}")
@@ -144,17 +142,15 @@ class Config:
         if config_name not in self._configs:
             raise ValueError(f"No configuration loaded for '{config_name}'")
 
-        root_dir = os.path.dirname(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        )
-        config_dir = os.path.join(root_dir, "config")
-        config_path = os.path.join(config_dir, f"{config_name}.json")
+        root_dir = Path(__file__).resolve().parents[3]
+        config_dir = root_dir / "config"
+        config_path = config_dir / f"{config_name}.json"
 
         # Ensure the directory exists
-        os.makedirs(config_dir, exist_ok=True)
+        config_dir.mkdir(parents=True, exist_ok=True)
 
         try:
-            with open(config_path, "w") as f:
+            with config_path.open("w") as f:
                 json.dump(self._configs[config_name], f, indent=4)
         except IOError as e:
             raise IOError(
